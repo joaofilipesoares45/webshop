@@ -2,18 +2,19 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/home'
 import Login from './pages/log'
 
+import { baseUrl } from './utils/functions'
 export default function RouterApp() {
     return (
         <Router>
             <Routes>
-                <Route path='/home' element={
+                <Route path={baseUrl + '/home'} element={
                     <Home />
                 } />
 
-                <Route path='/login' element={
+                <Route path={baseUrl + '/login'} element={
                     <Login />
                 } />
-                <Route exact path='/' element={
+                <Route exact path={baseUrl + '/'} element={
                     <Home />
                 } />
             </Routes>

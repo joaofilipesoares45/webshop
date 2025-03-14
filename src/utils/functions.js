@@ -94,3 +94,5 @@ export const sortListHour = (list) => {
 
     return list
 }
+
+export const baseUrl = '/webshop'
