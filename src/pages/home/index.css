@@ -31,10 +31,17 @@
                 flex-direction: column;
 
                 p {
+                    display: flex;
+                    gap: 5px;
+                    align-items: flex-end;
                     margin-top: -5px;
                     margin-left: 3px;
                     opacity: .7;
                     font-size: .6rem;
+
+                    svg {
+                        font-size: .7rem;
+                    }
                 }
             }
 
@@ -505,7 +512,7 @@
                 justify-content: center;
                 overflow: hidden;
 
-                background: url('public/sample_0.jpg');
+                background: url('/webshop/sample_0.jpg');
                 background-size: cover;
                 height: min-content;
                 min-height: 440px;
