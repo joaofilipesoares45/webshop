@@ -17,6 +17,7 @@ export function DataProvider({ children }) {
     const [usuarios, setUsuarios] = useState([])
     const [favoritos, setFavoritos] = useState([])
     const [cart, setCart] = useState([])
+    const [pedidos, setPedidos] = useState([])
 
     const [dataNotification, setDataNotification] = useState({})
 
@@ -39,10 +40,25 @@ export function DataProvider({ children }) {
     }
 
     useEffect(() => {
+        getList("users", setUsuarios)
+    }, [usuarios])
+
+    useEffect(() => {
+        if (localStorage.getItem("eshop:user") !== null) {
+            setUsuarioAtual(JSON.parse(localStorage.getItem("eshop:user")))
+        }
+    }, [])
+
+    useEffect(() => {
+        if (localStorage.getItem("eshop:purchases") !== null) {
+            setPedidos(JSON.parse(localStorage.getItem("eshop:puschases")))
+        }
+    }, [])
+
+    useEffect(() => {
         if (localStorage.getItem("eshop:favorites") !== null) {
             setFavoritos(JSON.parse(localStorage.getItem("eshop:favorites")))
         }
-        
     }, [])
 
     useEffect(() => {
@@ -67,8 +83,10 @@ export function DataProvider({ children }) {
 
         favoritos,
         setFavoritos,
-        cart, 
+        cart,
         setCart,
+        pedidos,
+        setPedidos,
     }
 
     return (

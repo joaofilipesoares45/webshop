@@ -18,15 +18,18 @@ export default function Log() {
     return (
         <div className="page log" onClick={changeForm}>
             <div className="view">
-
                 <div className="logo">
-                    <h1>Shelf <FontAwesomeIcon icon={solid.faBook} /></h1>
+                    <h1>
+                        <a href="/webshop">
+                            <span>eShop <p>loja online <FontAwesomeIcon icon={solid.faCartShopping} /></p></span>
+                        </a>
+                    </h1>
                 </div>
 
                 <div className="form">
                     <div className="paint">
                         <h1>
-                            <a href="/">Shelf <FontAwesomeIcon icon={solid.faBook} /></a>
+                            <a href="/">eShop <FontAwesomeIcon icon={solid.faShoppingCart} /></a>
                         </h1>
                     </div>
 

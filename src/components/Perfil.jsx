@@ -1,17 +1,13 @@
-import { faRightFromBracket, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { closeModal } from "../utils/functions";
 import {  useState } from "react";
-
 import Favorites from "./Favorites";
+import MyAcount from "./MyAcount";
 
 
 export default function Perfil() {
     const [view, setView] = useState()
-    
-    const logOut = () => {
-        console.log("Deslogado.");
-    }
 
     const changeView = (vw) => {
         let html
@@ -19,8 +15,8 @@ export default function Perfil() {
             case 'favoritos':
                 html = <Favorites setView={setView}/>
                 break;
-            default:
-                setView()
+            case 'my-acount':
+                html = <MyAcount setView={setView}/>
                 break;
         }
 
@@ -34,17 +30,15 @@ export default function Perfil() {
                 <div className="top">
                     <h2>Perfil <FontAwesomeIcon icon={faXmark} onClick={() => closeModal()} /></h2>
                     <nav>
-                        <button>Minha conta</button>
+                        <button onClick={() => changeView('my-acount')}>Minha conta</button>
                         <button onClick={() => changeView('favoritos')}>Favoritos</button>
-                        <button>Editar perfil</button>
+                        <button>Meus pedidos</button>
                     </nav>
                 </div>
 
                 {view && <div className="view">
                     {view}
                 </div>}
-
-                <button className="logout" onClick={logOut}>Desconectar <FontAwesomeIcon icon={faRightFromBracket} /></button>
             </div>
         </div>
     )

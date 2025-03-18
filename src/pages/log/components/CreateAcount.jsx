@@ -3,6 +3,7 @@ import * as solid from '@fortawesome/free-solid-svg-icons'
 import { apiConnection, formCaptureData } from "../../../utils/functions"
 import { useContext, useEffect, useState } from "react"
 import { DataContext } from "../../../context/DataContext"
+import {useNavigate} from "react-router"
 
 const userPatern = ['nome', 'idade', 'email', 'senha', 'cidade', 'uf']
 const ufs = [
@@ -38,6 +39,7 @@ const ufs = [
 export default function CreateAcount() {
 
     const { newNotification } = useContext(DataContext)
+    const navigate = useNavigate()
 
     const submit = async (event) => {
         event.preventDefault()
@@ -67,9 +69,13 @@ export default function CreateAcount() {
             return newNotification(1, 'Erro', 'UF inválida')
         }
 
+        loginObj.nivel = 'basico'
+    
         const result = await apiConnection('users', 'post', loginObj).then(data => { return data })
         if (result.status === 200) {
-            return newNotification(1, 'Login bem sucedido', 'Bem Vindo(a) ' + result.data.nome)
+            localStorage.setItem('eshop:user', JSON.stringify(result.data))
+            newNotification(1, 'Login bem sucedido', 'Bem Vindo(a) ' + result.data.nome)
+            setTimeout(() => navigate('/webshop'), 3000) 
         } else if (result.status === 404) {
             return newNotification(1, 'Erro', result.msg)
         }

@@ -1,8 +1,11 @@
 import { faArrowRight, faTrash, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { closeModal, numberForBrl } from "../utils/functions"
+import { baseUrl, closeModal, numberForBrl } from "../utils/functions"
+import { useNavigate } from "react-router"
 
 export default function Cart({ list, set }) {
+
+    const navigate = useNavigate()
 
     const remove = (index) => {
         const newList = list.filter((value, i) => i !== index)
@@ -38,7 +41,7 @@ export default function Cart({ list, set }) {
                     </div>
                 </div>
 
-                {list.length > 0 && <button className="next">Finalizar compra <FontAwesomeIcon icon={faArrowRight} /></button>}
+                {list.length > 0 && <button className="next" onClick={() => navigate(baseUrl + "/purchase")}>Finalizar compra <FontAwesomeIcon icon={faArrowRight} /></button>}
             </div>
         </div>
     )

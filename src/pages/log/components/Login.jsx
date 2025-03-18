@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import * as solid from '@fortawesome/free-solid-svg-icons'
-import { apiConnection, formCaptureData } from "../../../utils/functions"
+import { apiConnection, baseUrl, formCaptureData } from "../../../utils/functions"
 import { useContext, useState } from "react"
 import { DataContext } from "../../../context/DataContext"
 import { useNavigate } from "react-router"
@@ -37,11 +37,14 @@ export default function Login() {
 
         const result = await apiConnection('login', 'post', loginObj).then(data => { return data })
 
+        if (result === undefined) {
+            return newNotification(1, "Erro no servidor", 'Tente mais tarde!')
+        }
         if (result.status === 200) {
-            localStorage.setItem('shelflogin:user', JSON.stringify(result.data))
+            localStorage.setItem('eshop:user', JSON.stringify(result.data))
             newNotification(1, 'Login bem sucedido', 'Bem Vindo(a) de volta ' + result.data.nome)
             setTimeout(() => {
-                return navigate('/home')
+                return navigate(baseUrl)
             }, 3000)
         
         } else if (result.status === 404) {

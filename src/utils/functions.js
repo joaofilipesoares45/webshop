@@ -18,7 +18,6 @@ export const apiConnection = async (path, method, body) => {
             })
     } catch (e) {
         console.log(e);
-        // setNotification(2, 'Erro', 'Servidor não está respondendo')
     }
 }
 
@@ -93,6 +92,10 @@ export const sortListHour = (list) => {
     }
 
     return list
+}
+
+export const logOut = () => {
+    localStorage.removeItem("eshop:user")
 }
 
 export const baseUrl = '/webshop'
