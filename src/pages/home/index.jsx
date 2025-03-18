@@ -77,24 +77,36 @@ export default function Home() {
             }
             if (next) {
                 next.setAttribute('view', 'true')
+                next.setAttribute("position", "left")
             }
 
         } else {
+            let next
+            let view
             slide.forEach((element, index) => {
-                if (index > 0) {
-                    if (element.getAttribute('view') === 'true') {
-                        element.setAttribute('view', 'false')
-                        slide[index - 1].setAttribute('view', 'true')
+                if (element.getAttribute('view') === 'true') {
+                    view = element
+                    if (index >= 1) {
+                        next = slide[index - 1]
                     }
                 }
             });
+            view.setAttribute('view', 'false')
+            if (!next) {
+                next = slide[slide.length - 1]
+            }
+            if (next) {
+                next.setAttribute('view', 'true')
+                next.setAttribute("position", "right")
+            }
         }
     }
 
+    const [position, setPosition] = useState()
     return (
         <div className="page home">
             <nav className="top-nav">
-                <a href="/webshop">
+                <a href="/webshop" className="logo">
                     <span>eShop <p>loja online <FontAwesomeIcon icon={faCartShopping} /></p></span>
                 </a>
                 <nav>
@@ -129,17 +141,28 @@ export default function Home() {
                     <img src="/webshop/smartwatch.jpeg" alt="" />
                 </div>
 
-                <div className="highlights">
+                <div className="highlights" onTouchStart={(event) => setPosition(event.touches[0].clientX)} onTouchEnd={(event) => {
+
+                    if (event.changedTouches[0].clientX < position) {
+                        slideRoller(document.querySelector(".page.home .highlights .roll-high"), true)
+                    } else {
+                        slideRoller(document.querySelector(".page.home .highlights .roll-high"))
+                    }
+                }}>
                     <FontAwesomeIcon icon={faChevronLeft} className="roll-high" onClick={({ target }) => slideRoller(target)} />
                     <FontAwesomeIcon icon={faChevronRight} className="roll-high" onClick={({ target }) => slideRoller(target, true)} />
                     {produtos.map((item, index) => {
                         return <SlideDiv key={index + item.nome} item={item} list={cart} set={setCart} index={index} select={setSelectedProd} />
                     })}
                 </div>
-                <div className="rrrr">
 
-                </div>
+
             </section>
+            <footer>
+                <a href="/webshop" className="logo">
+                    <span>eShop <p>loja online <FontAwesomeIcon icon={faCartShopping} /></p></span>
+                </a>
+            </footer>
             <Cart list={cart} set={setCart} />
             <Perfil />
             {selectedProd && <ViewProduct product={selectedProd} close={setSelectedProd} />}
