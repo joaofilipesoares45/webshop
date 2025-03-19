@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBagShopping, faCartShopping, faChevronLeft, faChevronRight, faMagnifyingGlass, faUser } from "@fortawesome/free-solid-svg-icons";
-
-import './index.css'
+import { faGithub } from "@fortawesome/free-brands-svg-icons"
 import { useContext, useState } from "react";
 import Cart from "../../components/Cart";
 import { openModal } from "../../utils/functions";
@@ -9,6 +8,7 @@ import SlideDiv from "../../components/SlideDiv";
 import Perfil from "../../components/Perfil";
 import { DataContext } from "../../context/DataContext";
 import ViewProduct from "../../components/ViewProduct";
+import "./index.css"
 
 const produtos = [
     {
@@ -143,9 +143,9 @@ export default function Home() {
 
                 <div className="highlights" onTouchStart={(event) => setPosition(event.touches[0].clientX)} onTouchEnd={(event) => {
 
-                    if (event.changedTouches[0].clientX < position) {
+                    if (event.changedTouches[0].clientX < position - 150) {
                         slideRoller(document.querySelector(".page.home .highlights .roll-high"), true)
-                    } else {
+                    } else if (event.changedTouches[0].clientX > position + 150) {
                         slideRoller(document.querySelector(".page.home .highlights .roll-high"))
                     }
                 }}>
@@ -162,6 +162,9 @@ export default function Home() {
                 <a href="/webshop" className="logo">
                     <span>eShop <p>loja online <FontAwesomeIcon icon={faCartShopping} /></p></span>
                 </a>
+                <h3>
+                    <a href="https://github.com/joaofilipesoares45" target="_blank"><FontAwesomeIcon icon={faGithub} />https://github.com/joaofilipesoares45</a> 
+                </h3>
             </footer>
             <Cart list={cart} set={setCart} />
             <Perfil />

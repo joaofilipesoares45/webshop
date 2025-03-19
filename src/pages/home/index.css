@@ -52,40 +52,6 @@
         top: 10px;
         background-color: white;
 
-        a {
-            display: flex;
-            align-items: center;
-            align-items: flex-end;
-            gap: 15px;
-            color: black;
-            font-size: 2rem;
-            font-weight: 650;
-            flex-wrap: nowrap;
-
-            span {
-                display: flex;
-                flex-direction: column;
-
-                p {
-                    display: flex;
-                    gap: 5px;
-                    align-items: flex-end;
-                    margin-top: -5px;
-                    margin-left: 3px;
-                    opacity: .7;
-                    font-size: .6rem;
-
-                    svg {
-                        font-size: .7rem;
-                    }
-                }
-            }
-
-            svg {
-                font-size: 1.8rem;
-            }
-        }
-
         nav {
             display: flex;
             justify-content: space-around;
@@ -652,7 +618,6 @@
             gap: 20px;
             padding-inline: 20px;
             overflow: hidden;
-            margin-bottom: 200px;
 
             .roll-high {
                 padding: 10px 15px;
@@ -697,10 +662,11 @@
 
                 &[view='true'] {
                     display: flex;
-                    
+
                     &[position="left"] {
                         animation: var(--show-left);
                     }
+
                     &[position="right"] {
                         animation: var(--show-right);
 
@@ -812,7 +778,30 @@
     }
 
     footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+
         background-color: black;
+        min-height: 100px;
+        margin-top: 50px;
+        padding: 10px;
+
+        .logo {
+            color: white !important;
+            font-size: 1.4rem;
+        }
+
+        h3 {
+            font-size: 1rem;
+            a {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: white
+            }
+        }
     }
 }
 
@@ -2026,6 +2015,32 @@
                             }
                         }
                     }
+                }
+            }
+        }
+        footer {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+    
+            background-color: black;
+            gap: 10px;
+            min-height: min-content;
+            margin-top: 50px;
+            padding: 25px;
+    
+            .logo {
+                color: white !important;
+                font-size: 1.4rem;
+            }
+    
+            h3 {
+                font-size: .7rem;
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    color: white
                 }
             }
         }

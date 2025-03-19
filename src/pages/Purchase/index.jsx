@@ -103,7 +103,7 @@ export default function Purchase() {
         purchasePattern.total = total()
         purchasePattern.products = list
 
-        if (pedidos.length === 0 ) {
+        if (pedidos.lenght === 0 ) {
             localStorage.setItem("eshop:purchases", JSON.stringify([purchasePattern])) 
         }else {
             localStorage.setItem("eshop:purchases", JSON.stringify([...pedidos, purchasePattern]))
