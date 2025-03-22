@@ -1,0 +1,303 @@
+.page.search {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+
+    .search-nav {
+        display: flex;
+        gap: 30px;
+        padding: 10px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.305);
+
+        form {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            width: 100%;
+
+            div.text-input {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                position: relative;
+
+                input {
+                    border-radius: 0px;
+                    border-bottom: solid 2px rgba(0, 0, 0, 0.324);
+                    padding: 10px;
+                    font-size: 1rem;
+                    width: 100%;
+                    max-width: 300px;
+                    min-width: 300px;
+
+                    --border-c: rgb(85, 85, 255);
+                }
+
+                button {
+                    color: black;
+                    background-color: transparent;
+                    position: absolute;
+                    font-size: 1.2rem;
+                    padding: 10px;
+                }
+            }
+        }
+    }
+
+    section {
+        min-height: calc(100vh - 200px);
+        padding-bottom: 20px;
+        h2 {
+            padding: 10px;
+        }
+
+        .list {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 10px;
+            padding: 10px;
+            height: 100%;
+
+            .item {
+                display: flex;
+                flex-direction: column;
+
+                justify-content: space-between;
+                position: relative;
+                overflow: hidden;
+                box-shadow: 0 1px 5px gainsboro;
+                border-radius: 5px;
+                max-width: 250px;
+                /* height: max-content; */
+                transition: .2s;
+                animation: var(--show-top);
+
+                &:hover {
+                    scale: 1.005;
+
+                    nav {
+                        right: 0px;
+                    }
+                }
+
+                nav {
+                    position: absolute;
+                    right: -50px;
+                    display: flex;
+                    flex-direction: column;
+                    padding: 5px;
+                    gap: 5px;
+                    transition: .2s;
+
+                    svg {
+                        background-color: black;
+                        color: white;
+                        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.253);
+
+                        padding: 10px 9px;
+                        border-radius: 50%;
+                        font-size: .7rem;
+
+                        &.fa-heart-circle-check {
+                            background-color: red;
+                            animation: expand .5s;
+                        }
+
+                        &.fa-cart-arrow-down {
+                            background-color: rgb(0, 0, 137);
+                            animation: var(--shake);
+                        }
+
+                        &:first-child {
+                            &:hover {
+                                background-color: rgb(183, 0, 0);
+                            }
+                        }
+                    }
+                }
+
+                .img {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100%;
+                    padding: 5px;
+                    background-color: gainsboro;
+
+                    img {
+                        max-width: 100%;
+                        border-radius: 5px;
+                    }
+                }
+
+                .info {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    cursor: pointer;
+                    padding: 10px;
+
+                    h4 {
+                        font-size: .9rem;
+                        color: rgb(72, 72, 72);
+                        font-weight: 500;
+
+                        &:hover {
+                            text-decoration: underline;
+                            color: rebeccapurple;
+                        }
+                    }
+
+                    span {
+                        font-size: 1.1rem;
+                        font-weight: 550;
+                    }
+                }
+            }
+        }
+    }
+
+    footer {
+        margin-top: 0px;
+    }
+}
+
+@media (max-width: 500px) {
+    .page.search {
+
+        .search-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px;
+            padding-top: 0px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.305);
+
+            form {
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+                width: 100%;
+
+                div.text-input {
+                    display: flex;
+                    justify-content: flex-end;
+                    position: relative;
+                    width: 100%;
+
+                    input {
+                        background-color: rgb(240, 240, 240);
+                        border-radius: 0px;
+                        border-bottom: solid 2px rgba(0, 0, 0, 0.324);
+                        padding: 10px;
+                        font-size: .9rem;
+                        width: 100%;
+                        max-width: none;
+                        min-width: auto;
+                        --border-c: rgb(85, 85, 255);
+                    }
+
+                    button {
+                        color: black;
+                        background-color: transparent;
+                        position: absolute;
+                        font-size: 1.2rem;
+                        padding: 10px;
+                    }
+                }
+            }
+        }
+
+        section {
+            h2 {
+                font-size: 1rem;
+                padding: 10px;
+            }
+
+            .list {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+
+                .item {
+                    display: flex;
+                    flex-direction: column;
+
+                    justify-content: space-between;
+                    position: relative;
+                    overflow: hidden;
+                    box-shadow: 0 1px 5px gainsboro;
+                    border-radius: 5px;
+                    max-width: 250px;
+                    transition: .2s;
+                    animation: var(--show-top);
+
+                    &:hover {
+                        scale: 1.005;
+
+                        nav {
+                            right: 0px;
+                        }
+                    }
+
+                    nav {
+                        position: absolute;
+                        /* right: 0px; */
+                        display: flex;
+                        flex-direction: column;
+                        padding: 5px;
+                        gap: 5px;
+                        transition: .2s;
+
+                        svg {
+                            background-color: black;
+                            color: white;
+                            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.253);
+
+                            padding: 10px 9px;
+                            border-radius: 50%;
+                            font-size: .6rem;
+                        }
+                    }
+
+                    .img {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 100%;
+                        padding: 5px;
+                        background-color: gainsboro;
+
+                        img {
+                            max-width: 100%;
+                            border-radius: 5px;
+                        }
+                    }
+
+                    .info {
+                        cursor: pointer;
+                        padding: 10px;
+
+                        h4 {
+                            font-size: .6rem;
+                            color: rgb(72, 72, 72);
+                            font-weight: 500;
+
+                            &:hover {
+                                text-decoration: underline;
+                                color: rebeccapurple;
+                            }
+                        }
+
+                        span {
+                            font-size: .9rem;
+                            font-weight: 550;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

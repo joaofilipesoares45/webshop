@@ -20,6 +20,7 @@ export function DataProvider({ children }) {
     const [pedidos, setPedidos] = useState([])
 
     const [dataNotification, setDataNotification] = useState({})
+    const [searchText, setSearchText] = useState()
 
     const newNotification = (type, title, text, fn) => {
         switch (type) {
@@ -80,6 +81,8 @@ export function DataProvider({ children }) {
         dataNotification,
         setDataNotification,
         newNotification,
+        searchText, 
+        setSearchText,
 
         favoritos,
         setFavoritos,
