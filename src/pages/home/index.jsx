@@ -11,6 +11,7 @@ import ViewProduct from "../../components/ViewProduct";
 import "./index.css"
 import { useNavigate } from "react-router";
 import Footer from "../../components/footer";
+import Hlist from "../../components/H_List";
 
 const produtos = [
     {
@@ -147,10 +148,10 @@ export default function Home() {
                     <button>
                         <span>Categorias</span>
                         <div className="categories">
-                            {categorias.map(cat => { return <p onClick={search}>{cat}</p> })}
+                            {categorias.map(cat => { return <p key={cat} onClick={search}>{cat}</p> })}
                         </div>
                     </button>
-                    <button>Ofertas</button>
+                    <button><a href="#offer">Ofertas</a></button>
                     <button><a href="#highlights">Populares</a></button>
                     <button><a href="#week">Semanal</a></button>
                 </nav>
@@ -194,6 +195,7 @@ export default function Home() {
                         return <SlideDiv key={index + item.nome} item={item} list={cart} set={setCart} index={index} select={setSelectedProd} />
                     })}
                 </div>
+                <Hlist list={produtos} select={setSelectedProd}/>
             </section>
             <Footer />
             <Cart list={cart} set={setCart} />

@@ -791,6 +791,111 @@ footer {
   }
 }
 
+.h-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 250px);
+  justify-content: center;
+
+  padding: 40px 10px;
+  gap: 10px;
+
+  background-color: black;
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    min-height: 320px;
+    padding: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+
+    background-color: white;
+
+    &:hover nav {
+      right: 0px;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      position: absolute;
+      right: -50px;
+      top: 0px;
+      transition: .3s;
+      padding: 5px;
+
+      svg {
+        padding: 12px 10px;
+        background-color: rgb(0, 0, 0);
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.409);
+        color: rgb(255, 255, 255);
+        border-radius: 50%;
+
+        &:hover {
+          background-color: rgb(0, 0, 137);
+        }
+
+        &.fa-heart-circle-check {
+          background-color: red;
+          animation: expand .5s;
+        }
+
+        &.fa-cart-arrow-down {
+          background-color: rgb(0, 0, 137);
+          animation: var(--shake);
+        }
+
+        &:first-child {
+          &:hover {
+            background-color: rgb(183, 0, 0);
+          }
+        }
+      }
+    }
+
+    .img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+
+      img {
+        max-width: 200px;
+        border-radius: 10px;
+      }
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+      border-top: solid 3px black;
+      padding-top: 10px;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      h4 {
+        font-size: .8rem;
+        font-weight: 500;
+      }
+
+      p {
+        font-weight: 550;
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
 @media (max-width: 750px) {
   .modal.view-product {
     .content {
@@ -1107,6 +1212,104 @@ footer {
         align-items: center;
         gap: 10px;
         color: white
+      }
+    }
+  }
+
+  .h-list {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    justify-content: flex-start;
+
+    padding: 40px 10px;
+    gap: 10px;
+
+    background-color: black;
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+
+      min-width: 250px;
+      min-height: 320px;
+      padding: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+
+      background-color: white;
+
+      &:hover nav {
+        right: 0px;
+      }
+
+      nav {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        transition: .3s;
+        padding: 5px;
+
+        svg {
+          padding: 12px 10px;
+          background-color: rgb(0, 0, 0);
+          color: rgb(255, 255, 255);
+          border-radius: 50%;
+          font-size: .7rem;
+
+          &:hover {
+            background-color: rgb(0, 0, 137);
+          }
+
+          &.fa-heart-circle-check {
+            background-color: red;
+            animation: expand .5s;
+          }
+
+          &.fa-cart-arrow-down {
+            background-color: rgb(0, 0, 137);
+            animation: var(--shake);
+          }
+
+          &:first-child {
+            &:hover {
+              background-color: rgb(183, 0, 0);
+            }
+          }
+        }
+      }
+
+      .img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+
+        img {
+          max-width: none;
+          width: 100%;
+          min-width: 10px;
+          border-radius: 10px;
+        }
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+        border-top: solid 3px black;
+        padding-top: 10px;
+
+
+        h4 {
+          font-size: .7rem;
+        }
       }
     }
   }

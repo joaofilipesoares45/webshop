@@ -47,8 +47,8 @@
         margin: 10px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.172);
         border-radius: 5px;
-        position: sticky;
-        z-index: 2;
+        /* position: sticky;
+        z-index: 2; */
         top: 10px;
         background-color: white;
 
