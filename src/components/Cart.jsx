@@ -2,8 +2,11 @@ import { faArrowRight, faTrash, faXmark } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { baseUrl, closeModal, numberForBrl } from "../utils/functions"
 import { useNavigate } from "react-router"
+import { useContext } from "react"
+import { DataContext } from "../context/DataContext"
 
 export default function Cart({ list, set }) {
+    const {usuarioAtual, newNotification}= useContext(DataContext)
 
     const navigate = useNavigate()
 
@@ -41,7 +44,16 @@ export default function Cart({ list, set }) {
                     </div>
                 </div>
 
-                {list.length > 0 && <button className="next" onClick={() => navigate(baseUrl + "/purchase")}>Finalizar compra <FontAwesomeIcon icon={faArrowRight} /></button>}
+                {list.length > 0 && <button className="next" onClick={() => {
+                    if (usuarioAtual) {
+                        navigate(baseUrl + "/purchase")
+                    }else {
+                        newNotification(2, "Erro", "Faça login para prosseguir!", () => {
+                            navigate(baseUrl + "/login")
+                        })
+                    }
+                    
+                }}>Finalizar compra <FontAwesomeIcon icon={faArrowRight} /></button>}
             </div>
         </div>
     )
