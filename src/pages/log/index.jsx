@@ -4,6 +4,7 @@ import Login from "./components/Login"
 import CreateAcount from "./components/CreateAcount"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import * as solid from '@fortawesome/free-solid-svg-icons'
+import { baseUrl } from "../../utils/functions"
 
 export default function Log() {
 
@@ -20,7 +21,7 @@ export default function Log() {
             <div className="view">
                 <div className="logo">
                     <h1>
-                        <a href="/webshop">
+                        <a href={baseUrl}>
                             <span>eShop <p>loja online <FontAwesomeIcon icon={solid.faCartShopping} /></p></span>
                         </a>
                     </h1>
@@ -29,7 +30,7 @@ export default function Log() {
                 <div className="form">
                     <div className="paint">
                         <h1>
-                            <a href="/">eShop <FontAwesomeIcon icon={solid.faShoppingCart} /></a>
+                            <a href={baseUrl}>eShop <FontAwesomeIcon icon={solid.faShoppingCart} /></a>
                         </h1>
                     </div>
 
