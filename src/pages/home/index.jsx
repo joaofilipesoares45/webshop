@@ -199,7 +199,7 @@ export default function Home() {
             </section>
             <Footer />
             <Cart list={cart} set={setCart} />
-            <Perfil />
+            <Perfil setSelectedProd={setSelectedProd}/>
             {selectedProd && <ViewProduct product={selectedProd} close={setSelectedProd} />}
         </div>
     )

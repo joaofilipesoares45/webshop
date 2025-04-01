@@ -52,7 +52,7 @@ export function DataProvider({ children }) {
 
     useEffect(() => {
         if (localStorage.getItem("eshop:purchases") !== null) {
-            setPedidos(JSON.parse(localStorage.getItem("eshop:puschases")))
+            setPedidos(JSON.parse(localStorage.getItem("eshop:purchases")))
         }
     }, [])
 
