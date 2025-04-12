@@ -69,6 +69,7 @@ export default function Home() {
     const [selectedProd, setSelectedProd] = useState()
     const navigate = useNavigate()
 
+    const [position, setPosition] = useState()
     const slideRoller = (target, position) => {
         const slide = target.parentElement.querySelectorAll('.slide-div')
         if (position) {
@@ -137,7 +138,7 @@ export default function Home() {
         }
     })
 
-    const [position, setPosition] = useState()
+
     return (
         <div className="page home">
             <nav className="top-nav">
@@ -183,10 +184,11 @@ export default function Home() {
                 </div>
 
                 <div className="highlights" id="highlights" onTouchStart={(event) => setPosition(event.touches[0].clientX)} onTouchEnd={(event) => {
+                    const element = document.querySelector(".page.home .highlights .roll-high")
                     if (event.changedTouches[0].clientX < position - 120) {
-                        slideRoller(document.querySelector(".page.home .highlights .roll-high"), true)
+                        slideRoller(element, true)
                     } else if (event.changedTouches[0].clientX > position + 120) {
-                        slideRoller(document.querySelector(".page.home .highlights .roll-high"))
+                        slideRoller(element)
                     }
                 }}>
                     <FontAwesomeIcon icon={faChevronLeft} className="roll-high" onClick={({ target }) => slideRoller(target)} />
@@ -195,11 +197,11 @@ export default function Home() {
                         return <SlideDiv key={index + item.nome} item={item} list={cart} set={setCart} index={index} select={setSelectedProd} />
                     })}
                 </div>
-                <Hlist list={produtos} select={setSelectedProd}/>
+                <Hlist list={produtos} select={setSelectedProd} />
             </section>
             <Footer />
             <Cart list={cart} set={setCart} />
-            <Perfil setSelectedProd={setSelectedProd}/>
+            <Perfil setSelectedProd={setSelectedProd} />
             {selectedProd && <ViewProduct product={selectedProd} close={setSelectedProd} />}
         </div>
     )

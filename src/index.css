@@ -896,6 +896,67 @@ footer {
   }
 }
 
+.slide-image {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  height: 100vh;
+  max-height: 500px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.516);
+  /* background: url("sample_0 (12).jpg"); */
+  background: linear-gradient(rgba(0, 0, 0, 0.924), rgba(2, 12, 53, 0.76));
+  box-shadow: 0 2px 5px gainsboro;
+  .list {
+    .item {
+      width: 100%;
+      height: 100%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+
+      &[view='true'] {
+        display: flex;
+
+        &[position="left"] {
+            animation: var(--show-left);
+        }
+
+        &[position="right"] {
+            animation: var(--show-right);
+
+        }
+    }
+      
+      img {
+        width: 400px;
+        border-radius: 5px;
+        pointer-events: none;
+        box-shadow: 0 20px 100px rgba(255, 255, 255, 0.264);
+      }
+    }
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    .select-img {
+      height: 12px;
+      width: 12px;
+      border-radius: 50%;
+      background-color: rgb(202, 202, 202);
+      cursor: pointer;
+
+      &[selected="true"] {
+        background-color: rgb(7, 24, 84);
+      }
+    }
+  }
+}
+
 @media (max-width: 750px) {
   .modal.view-product {
     .content {
@@ -1310,6 +1371,60 @@ footer {
         h4 {
           font-size: .7rem;
         }
+      }
+    }
+  }
+
+  .slide-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    gap: 10px;
+    width: 100%;
+    height: 100vh;
+    max-height: 500px;
+    padding: 10px;
+    
+    background-color: rgba(255, 255, 255, 0.516);
+    box-shadow: 0 2px 5px gainsboro;
+    position: relative;
+    .list {
+      .item {
+        width: 100%;
+        height: 100%;
+        display: none;
+        align-items: center;
+        justify-content: center;
+  
+        &[view="true"] {
+          display: flex;
+        }
+        
+        img {
+          width: 300px;
+          border-radius: 5px;
+          box-shadow: none;
+        }
+      }
+    }
+  
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
+      position: absolute;
+      bottom: 20px;
+
+      .select-img {
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
+        background-color: rgb(202, 202, 202);
+        box-shadow: 0 0 5px rgb(255, 255, 255);
+        cursor: pointer;
       }
     }
   }

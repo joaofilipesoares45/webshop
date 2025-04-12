@@ -44,12 +44,12 @@
         justify-content: space-between;
         align-items: center;
         padding: 5px 10px;
-        margin: 10px;
+        /* margin: 10px; */
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.172);
-        border-radius: 5px;
-        /* position: sticky;
-        z-index: 2; */
-        top: 10px;
+        /* border-radius: 5px; */
+        position: sticky;
+        z-index: 2;
+        top: 0px;
         background-color: white;
 
         nav {
@@ -59,10 +59,9 @@
             gap: 30px;
             transition: .3s;
 
-
             button {
                 background-color: transparent;
-                padding: 5px 10px;
+
                 border-radius: 40px;
                 color: black;
                 font-weight: 550;
@@ -73,12 +72,14 @@
 
                 a {
                     color: inherit;
+                    padding: 5px 10px;
                 }
 
                 &:first-child {
                     position: relative;
                     display: flex;
                     justify-content: center;
+                    padding: 5px 10px;
 
                     &:hover .categories {
                         opacity: 1;
@@ -88,19 +89,25 @@
 
                     .categories {
                         position: absolute;
-                        top: calc(100% + 1px);
+                        top: calc(100%);
                         display: flex;
                         flex-direction: column;
                         gap: 3px;
                         opacity: 0;
                         pointer-events: none;
-                        padding-top: 20px;
+                        padding-top: 30px;
 
                         p {
                             background-color: black;
                             color: white;
                             padding: 10px;
                             border-radius: 5px;
+
+                            &:hover {
+                                background-color: white;
+                                box-shadow: 0 1px 5px gainsboro;
+                                color: black;
+                            }
                         }
                     }
                 }
@@ -820,7 +827,6 @@
                         animation: var(--show-right);
 
                     }
-
                 }
 
                 &::after {
@@ -925,8 +931,6 @@
             }
         }
     }
-
-
 }
 
 @media (max-width: 750px) {
@@ -967,7 +971,7 @@
                         &:hover .categories {
                             opacity: 1;
                             pointer-events: all;
-                            animation: var(--show-top);
+                            animation: var(--show-right);
                         }
 
                         .categories {

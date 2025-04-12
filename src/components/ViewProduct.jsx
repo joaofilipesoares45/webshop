@@ -1,43 +1,15 @@
-import { faArrowLeft, faCartArrowDown, faCartPlus, faCheck, faChevronLeft, faChevronRight, faPaperclip, faShare, faStar } from "@fortawesome/free-solid-svg-icons"
+import { faArrowLeft, faCartArrowDown, faCartPlus, faCheck, faPaperclip, faShare, faStar } from "@fortawesome/free-solid-svg-icons"
 import { numberForBrl, openModal } from "../utils/functions"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useContext, useState } from "react"
 import { DataContext } from "../context/DataContext"
+import SlideImage from "./SlideImage"
 
 export default function ViewProduct({ product, close }) {
     const { cart, setCart, newNotification } = useContext(DataContext)
 
     const { nome, descricao, valor, lista_img } = product
     const [reviews, setReviews] = useState([])
-
-    const slideRoller = (target, position) => {
-        const slide = target.parentElement.querySelectorAll('.slide-div')
-        if (position) {
-            let next
-            slide.forEach((element, index) => {
-                if (index < slide.length - 1) {
-                    if (element.getAttribute('view') === 'true') {
-                        element.setAttribute('view', 'false')
-                        next = slide[index + 1]
-                    }
-                }
-            });
-            if (next) {
-                next.setAttribute('view', 'true')
-            }
-
-        } else {
-            slide.forEach((element, index) => {
-                if (index >= 1) {
-                    if (element.getAttribute('view') === 'true') {
-                        slide[index - 1].setAttribute('view', 'true')
-                        element.setAttribute('view', 'false')
-                    }
-                }
-
-            });
-        }
-    }
 
     const newReview = (event) => {
         event.preventDefault()
@@ -70,11 +42,11 @@ export default function ViewProduct({ product, close }) {
     }
 
     const isInCart = () => {
-        const ct = cart.map(el => {return el.nome})
+        const ct = cart.map(el => { return el.nome })
 
         if (ct.includes(nome)) {
             return true
-        }else {
+        } else {
             return false
         }
     }
@@ -83,19 +55,13 @@ export default function ViewProduct({ product, close }) {
         <div className="modal view-product" open>
             <div className="content">
                 <FontAwesomeIcon icon={faArrowLeft} onClick={() => close()} />
-                <div className="slide">
-                    <FontAwesomeIcon icon={faChevronLeft} className="roll-high" onClick={({ target }) => slideRoller(target)} />
-                    <FontAwesomeIcon icon={faChevronRight} className="roll-high" onClick={({ target }) => slideRoller(target, true)} />
-                    {lista_img.map((el, index) => {
-                        return <div className="slide-div" key={nome + "img" + index} view={index === 0 ? 'true' : 'false'} ><img src={el} alt="" /></div>
-                    })}
 
+                <SlideImage lista={lista_img}>
                     <nav>
                         <FontAwesomeIcon icon={faPaperclip} />
                         <FontAwesomeIcon icon={faShare} />
                     </nav>
-
-                </div>
+                </SlideImage>
 
                 <div className="info">
                     <h3>
@@ -120,14 +86,14 @@ export default function ViewProduct({ product, close }) {
                     </h5>
 
                     <nav>
-                        {isInCart() ? 
-                        <button style={{backgroundColor:"blue", "--color": "blue",}} onClick={() => 
-                            newNotification(2, "Produto adicionado ao carrinho!", "Ir para a compra?", () => {
-                                close()
-                                openModal('cart')
-                            })
-                        }>No carrinho<FontAwesomeIcon icon={faCartArrowDown} /></button> : 
-                        <button onClick={() => { addCart(product) }}>Adicionar ao carrinho<FontAwesomeIcon icon={faCartPlus} /></button>}
+                        {isInCart() ?
+                            <button style={{ backgroundColor: "blue", "--color": "blue", }} onClick={() =>
+                                newNotification(2, "Produto adicionado ao carrinho!", "Ir para a compra?", () => {
+                                    close()
+                                    openModal('cart')
+                                })
+                            }>No carrinho<FontAwesomeIcon icon={faCartArrowDown} /></button> :
+                            <button onClick={() => { addCart(product) }}>Adicionar ao carrinho<FontAwesomeIcon icon={faCartPlus} /></button>}
                     </nav>
                 </div>
 
