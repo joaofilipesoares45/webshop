@@ -9,6 +9,7 @@ lerna-debug.log*
 Firebase
 README.md
 
+dist
 node_modules
 dist-ssr
 *.local
