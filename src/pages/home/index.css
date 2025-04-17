@@ -720,46 +720,86 @@
 
         .week-promo {
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
             padding-inline: 20px;
             gap: 50px;
             width: 100%;
             height: 350px;
             background-color: rgba(130, 130, 130, 0.144);
             margin-bottom: 30px;
+            position: relative;
 
-            .info {
+            .slide {
                 display: flex;
-                flex-direction: column;
-                animation: var(--show-top);
+                flex-direction: row;
 
-                h3 {
-                    font-size: 1.5rem;
+                .item {
+                    display: none;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 50px;
+
+                    &[view=true] {
+                        display: flex;
+                    }
+
+                    .info {
+                        display: flex;
+                        flex-direction: column;
+                        animation: var(--show-top);
+                        pointer-events: none;
+
+                        h3 {
+                            font-size: 1.5rem;
+                        }
+
+                        button {
+                            display: flex;
+                            justify-content: center;
+                            align-self: flex-start;
+                            font-size: .8rem;
+                            font-weight: 500;
+                            padding: 10px 30px;
+                            margin-top: 10px;
+                            background-color: black;
+                            --back: rgb(48, 48, 48);
+                            --color: white;
+                            pointer-events: all;
+                        }
+                    }
+
+                    img {
+                        max-height: 300px;
+                        border-radius: 10px;
+                        mix-blend-mode: multiply;
+                        z-index: -1;
+                        animation: var(--show-left);
+                        pointer-events: none;
+                    }
                 }
+            }
+
+            nav {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                position: absolute;
+                bottom: 10px;
 
                 button {
-                    display: flex;
-                    justify-content: center;
-                    align-self: flex-start;
-                    font-size: .8rem;
-                    font-weight: 500;
-                    padding: 10px 30px;
-                    margin-top: 10px;
-                    background-color: black;
-                    --back: rgb(48, 48, 48);
-                    --color: white;
+                    padding: 5px;
+                    border-radius: 50%;
+
+                    --back: rgb(19, 22, 121);
+
+                    &[selected] {
+                        scale: 1.1;
+                        background-color: rgb(0, 0, 0);
+                    }
                 }
             }
-
-            img {
-                max-height: 300px;
-                border-radius: 10px;
-                mix-blend-mode: multiply;
-                z-index: -1;
-                animation: var(--show-left);
-            }
-
         }
 
         .highlights {
@@ -1220,41 +1260,48 @@
                 background-color: rgba(130, 130, 130, 0.144);
                 margin-bottom: 30px;
 
-                .info {
-                    display: flex;
-                    flex-direction: column;
-                    width: 100%;
+                .slide {
+                    .item {
+                        gap: 0px;
+                        .info {
+                            display: flex;
+                            flex-direction: column;
+                            width: 100%;
 
-                    h3 {
-                        font-size: 1.1rem;
-                        text-wrap: nowrap;
-                    }
+                            h3 {
+                                font-size: 1.1rem;
+                                text-wrap: nowrap;
+                            }
 
-                    span {
-                        font-size: .7rem;
-                    }
+                            span {
+                                font-size: .7rem;
+                            }
 
-                    button {
-                        display: flex;
-                        justify-content: center;
-                        align-self: flex-start;
-                        font-size: .7rem;
-                        font-weight: 500;
-                        padding: 5px 20px;
-                        margin-top: 10px;
-                        background-color: black;
-                        --back: rgb(48, 48, 48);
-                        --color: white;
+                            button {
+                                display: flex;
+                                justify-content: center;
+                                align-self: flex-start;
+                                font-size: .7rem;
+                                font-weight: 500;
+                                padding: 5px 20px;
+                                margin-top: 10px;
+                                background-color: black;
+                                --back: rgb(48, 48, 48);
+                                --color: white;
+                            }
+                        }
+
+                        img {
+                            width: 100%;
+                            max-width: 180px;
+                            border-radius: 10px;
+                            mix-blend-mode: multiply;
+                            z-index: -1;
+                        }
                     }
                 }
 
-                img {
-                    width: 100%;
-                    max-width: 180px;
-                    border-radius: 10px;
-                    mix-blend-mode: multiply;
-                    z-index: -1;
-                }
+
 
             }
 

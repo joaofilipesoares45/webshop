@@ -904,10 +904,10 @@ footer {
   height: 100vh;
   max-height: 500px;
   padding: 10px;
-  background-color: rgba(255, 255, 255, 0.516);
+  background-color: gainsboro;
   /* background: url("sample_0 (12).jpg"); */
-  background: linear-gradient(rgba(0, 0, 0, 0.924), rgba(2, 12, 53, 0.76));
-  box-shadow: 0 2px 5px gainsboro;
+  /* background: linear-gradient(rgba(0, 0, 0, 0.924), rgba(2, 12, 53, 0.76)); */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.311);
   .list {
     .item {
       width: 100%;

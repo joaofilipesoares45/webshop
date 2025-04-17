@@ -12,6 +12,7 @@ import "./index.css"
 import { useNavigate } from "react-router";
 import Footer from "../../components/footer";
 import Hlist from "../../components/H_List";
+import Slide from "../../components/mode/Slide";
 
 const produtos = [
     {
@@ -172,16 +173,66 @@ export default function Home() {
             </nav>
 
             <section>
-                <div className="week-promo" id="week">
-                    <div className="info">
-                        <h3>WEEK PROMO</h3>
-                        <span>
-                            Todos os SmartWatchs com 20% de desconto.
-                        </span>
-                        <button>Ver Mais</button>
+                <Slide children={<div className="week-promo" id="week">
+                    <div className="slide list">
+                        <div className="item" view="true">
+                            <div className="info">
+                                <h3>WEEK PROMO</h3>
+                                <span>
+                                    Todos os SmartWatchs com 20% de desconto.
+                                </span>
+                                <button>Ver Mais</button>
+                            </div>
+                            <img src="/webshop/smartwatch.jpeg" alt="" />
+                        </div>
+                        <div className="item">
+                            <div className="info">
+                                <h3>Promoção relâmpago</h3>
+                                <span>
+                                    Fones de Ouvido e headsets pela metado do preço
+                                </span>
+                                <button>Ver Mais</button>
+                            </div>
+                            <img src="/webshop/fone.jpg" alt="" />
+                        </div>
+                        <div className="item">
+                            <div className="info">
+                                <h3>Rolex</h3>
+                                <span>
+                                    Nova coleção de relógios rolex, edições de luxo e premium
+                                </span>
+                                <button>Ver Mais</button>
+                            </div>
+                            <img src="/webshop/rolex_preto.jpeg" alt="" />
+                        </div>
                     </div>
-                    <img src="/webshop/smartwatch.jpeg" alt="" />
-                </div>
+                    <nav onClick={({ target }) => {
+                        if (target.tagName === "BUTTON") {
+                            const index = target.getAttribute("index")
+                            const slide = document.querySelectorAll(".week-promo .slide .item")
+
+                            target.parentElement.querySelectorAll("button").forEach((btn) => {
+                                btn.removeAttribute("selected")
+                            })
+
+                            target.setAttribute("selected", "true")
+                            slide.forEach((div, i) => {
+                                if (div.hasAttribute("view")) {
+                                    div.removeAttribute("view")
+                                }
+
+                                if (i === Number(index)) {
+                                    div.setAttribute("view", "true")
+                                }
+                            })
+                        }
+                    }}>
+                        <button selected={"true"} index="0"></button>
+                        <button index="1"></button>
+                        <button index="2"></button>
+                    </nav>
+                </div>}/>
+                
 
                 <div className="highlights" id="highlights" onTouchStart={(event) => setPosition(event.touches[0].clientX)} onTouchEnd={(event) => {
                     const element = document.querySelector(".page.home .highlights .roll-high")
