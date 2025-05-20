@@ -76,7 +76,7 @@ export const whatsMsg = (number, msg) => {
     }
     window.open(`https://api.whatsapp.com/send/?phone=${number}&text=${msg}`)
 }
-
+  
 export const sortListHour = (list) => {
     for (let i = 0; i < list.length - 1; i++) {
         for (let j = 0; j < list.length; j++) {

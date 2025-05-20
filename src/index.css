@@ -309,6 +309,7 @@ footer {
   min-height: 100px;
   margin-top: 50px;
   padding: 10px;
+  border-radius: 0px;
 
   .logo {
     color: white !important;
